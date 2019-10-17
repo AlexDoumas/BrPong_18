@@ -217,7 +217,7 @@ The ‘pred_name’ key specifies the name of the pred unit (again, the name car
 
 For example, here are four propositions, two in the driver and two in the recipient, with one higher order proposition in both the driver and the recipient. Each proposition is specified with the information between the curly braces ({}). 
 
-simType='sim_file'
+simType='sym_file'
 symProps = [{'name': 'lovesJohnMary', 'RBs': [{'pred_name': 'lover', 'pred_sem': ['lover1', 'lover2', 'lover3'], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}, {'pred_name': 'beloved', 'pred_sem': ['beloved1', 'beloved2', 'beloved3'], 'higher_order': False, 'object_name': 'Mary', 'object_sem': ['mary1', 'mary2', 'mary3'], 'P': 'nil'}], 'set': 'driver', 'analog': 0},
 
 {'name': 'knowsKentlovesJohnMary', 'RBs': [{'pred_name': 'knower', 'pred_sem': ['knower1', 'knower2', 'knower3'], 'higher_order': False, 'object_name': 'Kent', 'object_sem': ['kent1', 'kent2', 'kent3'], 'P': 'nil'}, {'pred_name': 'known', 'pred_sem': ['known1', 'known2', 'known3'], 'higher_order': True, 'object_name': 'nil', 'object_sem': [], 'P': 'lovesJohnMary'}], 'set': 'driver', 'analog': 0}, 
@@ -226,7 +226,7 @@ symProps = [{'name': 'lovesJohnMary', 'RBs': [{'pred_name': 'lover', 'pred_sem':
 
 {'name': 'knowsHanslovesSusanBill', 'RBs': [{'pred_name': 'knower', 'pred_sem': ['knower1', 'knower2', 'knower3'], 'higher_order': False, 'object_name': 'Hans', 'object_sem': ['hans1', 'hans2', 'john3q'], 'P': 'nil'}, {'pred_name': 'known', 'pred_sem': ['known1', 'known2', 'known3'], 'higher_order': True, 'object_name': 'nil', 'object_sem': [], 'P': 'lovesSusanBill'}], 'set': 'recipient', 'analog': 0}]
 
-NOTE: It is necessary that all sim files for use in running DORA (either in DORA or User mode) must begin with the statement simType='sim_file’(if loading from a sim file formatted as above) or  simType=‘json_file’(if loading from a json dump—e.g., a saved DORA memory state). 
+NOTE: It is necessary that all sim files for use in running DORA (either in DORA or User mode) must begin with the statement simType='sym_file’(if loading from a sim file formatted as above) or  simType=‘json_file’(if loading from a json dump—e.g., a saved DORA memory state). 
 
 It is also possible to create sim files were the weights between POs and their semantics are specified directly, and in which semantics code for absolute metric (e.g., pixel) values (NOTE: for saving on memory and readability, when an absolute metric property such as some pixels is encoded by semantic features, instead of storing each pixel as a feature, a single feature specifying the extent of the property (e.g., 10 pixels or 100 pixels) is used; this information is unpacked into real units during processing). This format also appears in the saves of DORA’s memory state after simulations like those reported in Doumas et al., XXXX. Each semantic is specified by a list (rather than a string, as above), in the form [‘name’, weight, extent, property, type], where ‘name’ is the name of the semantic (again, the name carries no information for the model, but can be useful for the modeller in keeping track of units during simulations), weight specifies the weight between the semantic and the predicate or object (any real valued number between 0 and 1 inclusive), extent specifies the extent (as an integer) of the metric property or ‘nil’, otherwise, property is either set to the source of the metric dimension (e.g., the extent of effort of the inferior rectus muscle in pixels), or ‘nil’ otherwise, extent is the absolute value of the metric property (a real number; as noted above, this value is unpacked into real nodes during processing), and type is set to either ‘value’, if the semantic encodes a compressed metric property like pixels, or ’state’, for all other features. 
 
@@ -234,15 +234,15 @@ You can also create sim files with propositions that are only single-place predi
 
 An example of propositions without P units: 
 
-symProps = [{'name': ‘non_exist’, 'RBs': [{'pred_name': 'lover', 'pred_sem': ['lover1', 'lover2', 'lover3'], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}, {'pred_name': 'beloved', 'pred_sem': ['beloved1', 'beloved2', 'beloved3'], 'higher_order': False, 'object_name': 'Mary', 'object_sem': ['mary1', 'mary2', 'mary3'], 'P': 'nil'}], 'set': 'driver', 'analog': 0}, 
+symProps = [{'name': 'non_exist', 'RBs': [{'pred_name': 'lover', 'pred_sem': ['lover1', 'lover2', 'lover3'], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}, {'pred_name': 'beloved', 'pred_sem': ['beloved1', 'beloved2', 'beloved3'], 'higher_order': False, 'object_name': 'Mary', 'object_sem': ['mary1', 'mary2', 'mary3'], 'P': 'nil'}], 'set': 'driver', 'analog': 0}, 
 
-{'name': ‘non_exist’, 'RBs': [{'pred_name': 'lover', 'pred_sem': ['lover1', 'lover2', 'lover3'], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}, {'pred_name': 'beloved', 'pred_sem': ['beloved1', 'beloved2', 'beloved3'], 'higher_order': False, 'object_name': 'Mary', 'object_sem': ['mary1', 'mary2', 'mary3'], 'P': 'nil'}], 'set': 'recipient', 'analog': 0}]
+{'name': 'non_exist', 'RBs': [{'pred_name': 'lover', 'pred_sem': ['lover1', 'lover2', 'lover3'], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}, {'pred_name': 'beloved', 'pred_sem': ['beloved1', 'beloved2', 'beloved3'], 'higher_order': False, 'object_name': 'Mary', 'object_sem': ['mary1', 'mary2', 'mary3'], 'P': 'nil'}], 'set': 'recipient', 'analog': 0}]
 
 Notice that the slot for the P unit is filled with ‘non_exist’, indicating that the proposition contains no P unit. 
 
 An example of propositions without RB units: 
 
-symProps = [{'name': ‘non_exist’, 'RBs': [{'pred_name': ‘non_exist’, 'pred_sem': [], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}], 'set': 'driver', 'analog': 0}, 
+symProps = [{'name': 'non_exist', 'RBs': [{'pred_name': 'non_exist', 'pred_sem': [], 'higher_order': False, 'object_name': 'John', 'object_sem': ['john1', 'john2', 'john3'], 'P': 'nil'}], 'set': 'driver', 'analog': 0}, 
 
 {'name': 'non_exist', 'RBs': [{'pred_name': 'non_exist', 'pred_sem': [], 'higher_order': False, 'object_name': 'John2', 'object_sem': ['john1', 'john4', 'john5'], 'P': 'nil'}], 'set': 'recipient', 'analog': 0}]
 
