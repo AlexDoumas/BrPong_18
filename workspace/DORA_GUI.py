@@ -699,15 +699,15 @@ def simple_term_state_display(memory):
         print(printstring)
     print('P units:')
     for myP in memory.driver.Ps:
-        printstring = str(myP.name) + ': ACT=' + str(P.act) + ' and INPUT=' + str(myP.net_input)
+        printstring = str(myP.name) + ': ACT=' + str(myP.act) + ' and INPUT=' + str(myP.net_input)
         print(printstring)
     print('RB units:')
     for myRB in memory.driver.RBs:
-        printstring = str(myRB.name) + ': ACT=' + str(RB.act) + ' and INPUT=' + str(myRB.net_input)
+        printstring = str(myRB.name) + ': ACT=' + str(myRB.act) + ' and INPUT=' + str(myRB.net_input)
         print(printstring)
     print('PO units:')
     for myPO in memory.driver.POs:
-        printstring = str(myPO.name) + ': ACT=' + str(PO.act) + ' and INPUT=' + str(myPO.net_input)
+        printstring = str(myPO.name) + ': ACT=' + str(myPO.act) + ' and INPUT=' + str(myPO.net_input)
         print(printstring)
     print('')
     # display recipient state.
@@ -718,15 +718,15 @@ def simple_term_state_display(memory):
         print(printstring)
     print('P units:')
     for myP in memory.recipient.Ps:
-        printstring = str(myP.name) + ': ACT=' + str(P.act) + ' and INPUT=' + str(myP.net_input)
+        printstring = str(myP.name) + ': ACT=' + str(myP.act) + ' and INPUT=' + str(myP.net_input)
         print(printstring)
     print('RB units:')
     for myRB in memory.recipient.RBs:
-        printstring = str(myRB.name) + ': ACT=' + str(RB.act) + ' and INPUT=' + str(myRB.net_input)
+        printstring = str(myRB.name) + ': ACT=' + str(myRB.act) + ' and INPUT=' + str(myRB.net_input)
         print(printstring)
     print('PO units:')
     for myPO in memory.recipient.POs:
-        printstring = str(myPO.name) + ': ACT=' + str(PO.act) + ' and INPUT=' + str(myPO.net_input)
+        printstring = str(myPO.name) + ': ACT=' + str(myPO.act) + ' and INPUT=' + str(myPO.net_input)
         print(printstring)
     print('')
 
